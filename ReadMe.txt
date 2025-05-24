@@ -17,5 +17,6 @@ git merge <branch name> - merges the <Branch name> changes branch you are in (pr
 
 git remote 		- lists the remote repositories that exist in your repo
 git push -u origin master - pushes the commited changes on master to the origin repo on github
+git push -d <remote_name> <branchname>   # Delete remote branch when you're done with it = removes it from github. Same as doing it thru the github page
 
 touch .gitignore 	- add all file name/folders you don't want added to git/github here.  
