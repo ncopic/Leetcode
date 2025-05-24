@@ -4,7 +4,8 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        
+
+
 #--------------------------------------------------------
 # Solution 1 - Simple Solution
 #--------------------------------------------------------
@@ -23,7 +24,6 @@ class Solution(object):
         else:
             return False
         '''
-
 
 #--------------------------------------------------------
 # Solution 2 - not using strings in solution
@@ -48,7 +48,6 @@ class Solution(object):
         else:
             return False
         '''
-
 
 #--------------------------------------------------------
 # Solution 3 - Brute force fastest leetcode solution
