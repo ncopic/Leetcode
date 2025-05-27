@@ -54,7 +54,7 @@ class Solution(object):
         
 
         #--------------------------------------------------------
-        # Solution 2 - take inputs, convert to array, then put back into ListNode form -slow, but it works
+        # Solution 2 - take inputs, convert to array, then put back into ListNode form - slow, but it works
         #--------------------------------------------------------
 
         '''
@@ -110,12 +110,11 @@ class Solution(object):
         
         '''
 
-
-
         #--------------------------------------------------------
-        # Solution 3 - keep LL notation; use PREV,HEAD,NEXT
+        # Solution 3 - Doing this the "best" and "intended" way
         #--------------------------------------------------------
         
+        '''
         if (list1 == None) and (list2 == None):
             return None
         if (list1 == None):
@@ -123,59 +122,57 @@ class Solution(object):
         if (list2 == None):
             return list1
 
-        l1_head = list1
-        l2_head = list2
-
-        '''
-        #Accidentially rebuilt a backwards linked-list...
-        out_list = False
-        while l1_head or l2_head:
-            if l1_head == None:
-                if out_list:
-                    out_list = ListNode(l2_head.val, next=out_list)
-                    l2_head = l2_head.next
-                else:
-                    out_list = ListNode(l2_head.val, next=None)
-                    l2_head = l2_head.next
-            elif l2_head == None:
-                if out_list:
-                    out_list = ListNode(l1_head.val, next=out_list)
-                    l1_head = l1_head.next
-                else:
-                    out_list = ListNode(l1_head.val, next=None)
-                    l1_head = l1_head.next
-            elif l1_head.val <= l2_head.val:
-                if out_list:
-                    out_list = ListNode(l1_head.val, next=out_list)
-                    l1_head = l1_head.next
-                else:
-                    out_list = ListNode(l1_head.val, next=None)
-                    l1_head = l1_head.next
-            else:
-                if out_list:
-                    out_list = ListNode(l2_head.val, next=out_list)
-                    l2_head = l2_head.next
-                else:
-                    out_list = ListNode(l2_head.val, next=None)
-                    l2_head = l2_head.next
-        print(out_list)
-        return out_list
-        '''
+        l1 = list1
+        l2 = list2
 
         out_list = ListNode()
-        while (l1_head) or (l2_head):
-            if l1_head == None:
-                out_list.next = ListNode(l2_head.val, next=None)
-                l2_head = l2_head.next
-            elif l2_head == None:
-                out_list.next = ListNode(l1_head.val, next=None)
-                l1_head = l1_head.next
-            elif l1_head.val >= l2_head.val:
-                out_list.next = ListNode(l1_head.val, next=None)
-                l1_head = l1_head.next
+        temp = out_list
+        while (l1) or (l2):
+            if l1 == None:
+                temp.next = ListNode(l2.val, next=None)
+                l2 = l2.next
+                temp = temp.next
+            elif l2 == None:
+                temp.next = ListNode(l1.val, next=None)
+                l1 = l1.next
+                temp = temp.next
+            elif l1.val <= l2.val:
+                temp.next = ListNode(l1.val, next=None)
+                l1 = l1.next
+                temp = temp.next
             else:
-                out_list.next = ListNode(l2_head.val, next=None)
-                l2_head = l2_head.next
-        print(out_list)
-        return out_list
+                temp.next = ListNode(l2.val, next=None)
+                l2 = l2.next
+                temp = temp.next
+        return out_list.next
+        '''
+
+        #-----------------------------------------------------------
+        # Solution 4 - Same as 3, but cleaner with if/else statment in main logic
+        #-----------------------------------------------------------
+        if (list1 == None) and (list2 == None):
+            return None
+        if (list1 == None):
+            return list2
+        if (list2 == None):
+            return list1
+
+        l1 = list1
+        l2 = list2
+
+        out_list = ListNode()
+        temp = out_list
+
+        while (l1) and (l2):
+            if l1.val <= l2.val:
+                temp.next = ListNode(l1.val, next=None)
+                l1 = l1.next
+                temp = temp.next
+            else:
+                temp.next = ListNode(l2.val, next=None)
+                l2 = l2.next
+                temp = temp.next
+
+        temp.next = l1 or l2
+        return out_list.next
         
