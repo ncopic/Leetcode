@@ -12,14 +12,15 @@ class Solution(object):
 
 
         #--------------------------------------------------------
-        # Solution 2 - Hash table??
+        # Solution 2 - Hash table shortcut
         #--------------------------------------------------------
 
         dl = {}
         for ii in range(len(nums)):
             dl[nums[ii]] = ii
 
-        x=int(len(dl))
-        print("x = " + str(x))
-        print(type(x))
+        keys = sorted(dl.keys())
+        for ii in range(len(keys)):
+            nums[ii] = keys[ii]
+        x=len(dl)
         return x
