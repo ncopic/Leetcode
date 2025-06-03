@@ -1,0 +1,38 @@
+------------------------------------------------------------------------------------
+Binary Search:
+
+Trick is to have a "left" and "right" side of the array starting at the 0th and ending value, respectively.
+
+Compute the mid value with (left + right)//2 to take your guess.
+
+If you're wrong, update left or right, depending on if you were high or low, to be the mid value computed.
+
+If you get to a point where left==right and you still haven't found the number. It's not in the list, but the index that you're at is where it should be located. So return that index if needed.
+------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------
+Linked Lists:
+
+#python object for linked lists
+#def __init__(self, val=0, next=None):
+#  self.val = val
+#  self.next = next
+
+If you have a linked list object like what is shown above, there are a few things to know.
+
+1) if you are given a linked list, you traverse the list by assigning a "head" node, and updating the head node to point to the node.next() when you are ready to move to the next node in the list.
+  Ex, if you have a LIST1, you can set l1=LIST1. You can then access l1.val() to get the first value. When you want the 2nd value, you have to update l1 to l1=l1.next(). Now when you call l1.val(), it'll show the 2nd value in the linked list.
+
+2) When building your own linked list (not given one that is already built), you need to define the list "head" first and then ALSO have a temp variable that points to the same object. The reason you do this is so you can return the list head and therefore point to the beginning of the list because as you build the list, you have to update temp to temp=temp.next() and so temp won't keep track of the beginning of the list you're building. 
+  Ex, output_list=ListNode() and then assign temp=output_list so that they both point to the same starting node in the array. Then update temp.next=ListNode(VALUE, next=None) as many times as needed to build the linked list you want and you're good to go. But because the first node has NONE as its value, you'll want to return output_list.next() as the head of the linked list. 
+
+3) If you want to build a linked list in reverse, you can do this by setting the variable to point to itself as the input to the ListNode() linked list object.
+  Ex. Set reverse_list=ListNode(next=None). So the list is currently empty, then later in the code you set reverse_list=ListNode(Val=VALUE, next=reverse_list). This will take the first input VALUE and make sure it's the last value in the linked list. Basically a FILO of sorts. 
+------------------------------------------------------------------------------------
+
+
+
+
+
