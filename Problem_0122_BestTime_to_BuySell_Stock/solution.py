@@ -5,6 +5,9 @@ class Solution(object):
         :rtype: int
         """
         
+        #-------------------------------------------------------------------
+        # Solution 1 - Question is really "if next number is bigger, find the difference and tally it"
+        #-------------------------------------------------------------------
         profit = 0
 
         if len(prices) == 1:#if we only have 1 day of data, there is no profit
